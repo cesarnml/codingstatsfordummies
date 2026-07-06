@@ -1,0 +1,53 @@
+---
+title: CodingStats for Dummies
+description: A field guide to building the CodingStats iOS companion — an Apple Health for coding fitness, built on WakaTime data you already own.
+template: splash
+hero:
+  title: CodingStats for Dummies
+  tagline: A TypeScript developer's field guide to building the CodingStats iOS companion app — Apple Health, but for your coding life. Swift & SwiftUI primer first, then coding-time goals, burnout signals, AI-usage tracking, and client invoicing on top of data you already collect.
+  actions:
+    - text: Start reading
+      link: /01-the-big-picture/
+      icon: right-arrow
+      variant: primary
+    - text: Jump to the Swift primer
+      link: /02-swift-for-typescript-devs/
+      icon: rocket
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## The one-sentence mental model
+
+> **The iOS app is a fitness tracker over a database you already fill.** The [CodingStats web app](https://codingstats.vercel.app) snapshots your WakaTime activity into Supabase every day (rescuing it from the 7-day free-tier window); the iOS companion reads that same database and asks the Apple-Health questions: *did you hit your ring today, are you training inside your window, and are you overtraining?*
+
+<CardGrid>
+  <Card title="Apple primer (02–03)" icon="translate">
+    Every Swift and SwiftUI/Xcode primitive you need, mapped to the TypeScript and web concepts you already know — optionals, protocols, actors, @State, NavigationStack, Swift Charts, targets, schemes, provisioning.
+  </Card>
+  <Card title="The data spine (04–05)" icon="open-book">
+    The WakaTime → SvelteKit cron → Supabase pipeline as it exists today, the exact table shapes, and the architecture of the iOS client that consumes them — networking, caching, offline.
+  </Card>
+  <Card title="Coding fitness (06–09)" icon="heart">
+    The product: preferred coding windows, daily & weekly goals, rest days, activity rings, burnout/sustainability analysis, AI-usage as a training signal, and client-facing invoicing.
+  </Card>
+  <Card title="Shipping (10)" icon="rocket">
+    Certificates, provisioning profiles, TestFlight, App Store review — the whole bureaucratic gauntlet, demystified once so you never fear it again.
+  </Card>
+  <Card title="Hands-on (11–12)" icon="puzzle">
+    Tiered-hint challenges that walk you from "empty Xcode project" to "ring on a widget," plus curated Swift/SwiftUI learning resources worth your time.
+  </Card>
+</CardGrid>
+
+## Who this is for
+
+One person, honestly: a TypeScript/SvelteKit developer who owns
+[codingstats.vercel.app](https://codingstats.vercel.app) and wants its data on
+an iPhone — as a real App Store app, not a web view. If that's you (or someone
+shaped like you), every chapter assumes web-dev fluency and zero Swift.
+
+🗣️ **In plain English.** You already track every minute you code. This guide
+teaches you to build the phone app that turns those minutes into something a
+fitness app would show you: goals, rings, rest days, warnings when you're
+overdoing it — and clean per-project hour reports you can hand to a client
+with an invoice.

@@ -1,0 +1,233 @@
+/*
+ * CodingStats "Dashboard" theme for Starlight.
+ * Design reference: codingstats.vercel.app — deep-space navy/violet panels,
+ * indigo primary, activity-green accents, crisp card borders. Dark-first,
+ * with a clean paper light mode for reading in daylight.
+ */
+
+/* ── Fonts ────────────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── Design tokens ────────────────────────────────────────────────────────── */
+:root {
+  --cs-void:        oklch(16.5% 0.02 295);   /* deep navy-violet page bg   */
+  --cs-panel:       oklch(21% 0.03 295);     /* card / panel bg            */
+  --cs-panel-hi:    oklch(26% 0.035 295);    /* raised panel               */
+  --cs-indigo:      oklch(58% 0.19 277);     /* primary — indigo 500-ish   */
+  --cs-indigo-lt:   oklch(72% 0.15 277);     /* links on dark              */
+  --cs-indigo-bg:   oklch(92% 0.04 277);     /* light-mode inline-code bg  */
+  --cs-green:       oklch(80% 0.2 140);      /* activity green (rings)     */
+  --cs-amber:       oklch(82% 0.14 80);      /* warning / streak amber     */
+  --cs-text-dk:     oklch(93% 0.01 286);     /* text on dark               */
+  --cs-text-lt:     oklch(24% 0.02 286);     /* text on light              */
+  --cs-ink-mid:     oklch(62% 0.03 286);
+  --cs-paper:       oklch(98.5% 0.004 286);  /* light page bg              */
+  --cs-paper-dim:   oklch(95.5% 0.006 286);
+  --cs-hairline-dk: oklch(32% 0.03 295);
+
+  --sl-font:      'Inter', ui-sans-serif, system-ui, sans-serif;
+  --sl-font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* ── Starlight color tokens — dark (primary theme) ───────────────────────── */
+:root[data-theme='dark'] {
+  --sl-color-bg:             var(--cs-void);
+  --sl-color-bg-sidebar:     oklch(19% 0.025 295);
+  --sl-color-bg-nav:         var(--cs-void);
+  --sl-color-bg-inline-code: oklch(30% 0.05 277);
+  --sl-color-text:           var(--cs-text-dk);
+  --sl-color-text-accent:    var(--cs-indigo-lt);
+  --sl-color-accent:         var(--cs-indigo);
+  --sl-color-accent-high:    oklch(80% 0.12 277);
+  --sl-color-accent-low:     oklch(30% 0.07 277);
+  --sl-color-white:          var(--cs-text-dk);
+  --sl-color-black:          var(--cs-void);
+  --sl-color-gray-1:         var(--cs-text-dk);
+  --sl-color-gray-2:         oklch(82% 0.02 286);
+  --sl-color-gray-3:         var(--cs-ink-mid);
+  --sl-color-gray-4:         oklch(40% 0.03 295);
+  --sl-color-gray-5:         oklch(30% 0.028 295);
+  --sl-color-gray-6:         var(--cs-panel);
+  --sl-color-gray-7:         var(--cs-void);
+  --sl-color-hairline-light:  var(--cs-hairline-dk);
+  --sl-color-hairline-medium: oklch(42% 0.03 295);
+}
+
+/* ── Starlight color tokens — light ──────────────────────────────────────── */
+:root[data-theme='light'] {
+  --sl-color-bg:             var(--cs-paper);
+  --sl-color-bg-sidebar:     var(--cs-paper-dim);
+  --sl-color-bg-nav:         var(--cs-paper);
+  --sl-color-bg-inline-code: var(--cs-indigo-bg);
+  --sl-color-text:           var(--cs-text-lt);
+  --sl-color-text-accent:    oklch(48% 0.19 277);
+  --sl-color-accent:         oklch(48% 0.19 277);
+  --sl-color-accent-high:    oklch(38% 0.17 277);
+  --sl-color-accent-low:     var(--cs-indigo-bg);
+  --sl-color-white:          var(--cs-paper);
+  --sl-color-black:          var(--cs-text-lt);
+  --sl-color-gray-1:         var(--cs-text-lt);
+  --sl-color-gray-2:         oklch(35% 0.02 286);
+  --sl-color-gray-3:         oklch(50% 0.02 286);
+  --sl-color-gray-4:         oklch(78% 0.012 286);
+  --sl-color-gray-5:         oklch(90% 0.008 286);
+  --sl-color-gray-6:         var(--cs-paper-dim);
+  --sl-color-gray-7:         var(--cs-paper);
+  --sl-color-hairline-light:  oklch(88% 0.01 286);
+  --sl-color-hairline-medium: oklch(70% 0.015 286);
+}
+
+/* ── Typography ───────────────────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.site-title {
+  font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight: 800 !important;
+  color: var(--sl-color-text-accent) !important;
+}
+
+/* ── Subtle grid backdrop — dark only ────────────────────────────────────── */
+:root[data-theme='dark'] body {
+  background-image:
+    linear-gradient(oklch(24% 0.03 295 / 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(24% 0.03 295 / 0.35) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* ── Header ──────────────────────────────────────────────────────────────── */
+header.header {
+  border-bottom: 1px solid var(--sl-color-hairline-light);
+}
+
+/* ── Sidebar active item — dashboard pill ────────────────────────────────── */
+.sidebar-content a[aria-current='page'],
+nav a[aria-current='page'] {
+  background-color: var(--sl-color-accent-low) !important;
+  color: var(--sl-color-text-accent) !important;
+  border-left: 3px solid var(--sl-color-accent) !important;
+  font-weight: 700 !important;
+  border-radius: 0 6px 6px 0;
+}
+
+/* ── Hero CTA buttons ────────────────────────────────────────────────────── */
+a.sl-link-button.primary,
+.sl-link-button[data-variant='primary'] {
+  background: linear-gradient(135deg, var(--cs-indigo), oklch(52% 0.21 300)) !important;
+  color: #fff !important;
+  border: 1px solid oklch(70% 0.12 277 / 0.5) !important;
+  border-radius: 10px !important;
+  font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 24px oklch(58% 0.19 277 / 0.35) !important;
+  transition: transform 0.12s ease, box-shadow 0.12s ease !important;
+}
+a.sl-link-button.primary:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 32px oklch(58% 0.19 277 / 0.5) !important;
+}
+
+a.sl-link-button:not(.primary),
+.sl-link-button[data-variant='minimal'] {
+  border: 1px solid var(--sl-color-hairline-medium) !important;
+  border-radius: 10px !important;
+  font-weight: 600 !important;
+}
+
+/* ── Cards (splash CardGrid) — dashboard panels ──────────────────────────── */
+article.card {
+  border: 1px solid var(--sl-color-hairline-light) !important;
+  border-radius: 12px !important;
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease !important;
+}
+:root[data-theme='dark'] article.card {
+  background: linear-gradient(180deg, var(--cs-panel), oklch(19% 0.028 295)) !important;
+}
+:root[data-theme='light'] article.card {
+  background-color: #fff !important;
+  box-shadow: 0 1px 3px oklch(24% 0.02 286 / 0.08) !important;
+}
+article.card:hover {
+  transform: translateY(-2px) !important;
+  border-color: var(--sl-color-accent) !important;
+  box-shadow: 0 6px 24px oklch(58% 0.19 277 / 0.18) !important;
+}
+
+/* ── Blockquote — goal-callout style ─────────────────────────────────────── */
+.sl-markdown-content blockquote {
+  border-left: 4px solid var(--sl-color-accent) !important;
+  border-radius: 0 8px 8px 0;
+  padding: 0.75rem 1rem;
+}
+:root[data-theme='dark'] .sl-markdown-content blockquote {
+  background: oklch(26% 0.05 277 / 0.5);
+}
+:root[data-theme='light'] .sl-markdown-content blockquote {
+  background: var(--cs-indigo-bg);
+}
+
+/* ── Inline code ─────────────────────────────────────────────────────────── */
+.sl-markdown-content :not(pre) > code {
+  border-radius: 5px;
+  padding: 0.1em 0.35em;
+}
+:root[data-theme='light'] .sl-markdown-content :not(pre) > code {
+  border: 1px solid oklch(85% 0.03 277);
+  color: oklch(38% 0.17 277);
+}
+
+/* ── Asides ──────────────────────────────────────────────────────────────── */
+.starlight-aside {
+  border-radius: 10px;
+}
+
+/* ── Tables — stat-card feel ─────────────────────────────────────────────── */
+.sl-markdown-content table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+:root[data-theme='dark'] .sl-markdown-content th {
+  background: var(--cs-panel-hi);
+}
+
+/* ── Mermaid diagrams ────────────────────────────────────────────────────── */
+div.mermaid {
+  border: 1px solid var(--sl-color-hairline-light);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+:root[data-theme='dark'] div.mermaid {
+  background: var(--cs-panel);
+}
+:root[data-theme='light'] div.mermaid {
+  background: var(--cs-paper-dim);
+}
+
+/* ── HR — activity-pulse divider ─────────────────────────────────────────── */
+.sl-markdown-content hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--sl-color-accent) 20%,
+    var(--cs-green) 50%,
+    var(--sl-color-accent) 80%,
+    transparent
+  );
+  opacity: 0.5;
+  margin: 2rem 0;
+}
+
+/* ── Pagefind search modal ───────────────────────────────────────────────── */
+:root {
+  --pagefind-ui-primary:    var(--sl-color-accent);
+  --pagefind-ui-text:       var(--sl-color-text);
+  --pagefind-ui-background: var(--sl-color-bg);
+  --pagefind-ui-border:     var(--sl-color-hairline-light);
+}
