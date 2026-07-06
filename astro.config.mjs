@@ -36,7 +36,9 @@ export default defineConfig({
         },
       ],
       head: [
-        { tag: 'link', attrs: { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' } },
+        // Favicon — shared identity with codingstats.vercel.app
+        { tag: 'link', attrs: { rel: 'icon', href: '/favicon.ico', sizes: '32x32' } },
+        { tag: 'link', attrs: { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' } },
         {
           tag: 'meta',
           attrs: {
@@ -44,6 +46,27 @@ export default defineConfig({
             content:
               'CodingStats, WakaTime, coding fitness, Apple Health for coding, Swift for TypeScript devs, SwiftUI primer, iOS companion app, coding time tracking, burnout prevention, developer invoicing, Supabase, SvelteKit',
           },
+        },
+        { tag: 'meta', attrs: { name: 'author', content: 'Cesar Mejia Leiva' } },
+        // Open Graph / Twitter — Starlight emits og:title/description/url per page
+        { tag: 'meta', attrs: { property: 'og:image', content: 'https://codingstatsfordummies.vercel.app/og-image.png' } },
+        { tag: 'meta', attrs: { property: 'og:image:width', content: '1200' } },
+        { tag: 'meta', attrs: { property: 'og:image:height', content: '630' } },
+        { tag: 'meta', attrs: { name: 'twitter:card', content: 'summary_large_image' } },
+        { tag: 'meta', attrs: { name: 'twitter:image', content: 'https://codingstatsfordummies.vercel.app/og-image.png' } },
+        {
+          tag: 'script',
+          attrs: { type: 'application/ld+json' },
+          content: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'CodingStats for Dummies',
+            url: 'https://codingstatsfordummies.vercel.app',
+            description:
+              'A field guide to building the CodingStats iOS companion app — an Apple Health for coding fitness. Swift & SwiftUI primer for TypeScript devs, WakaTime data retention, coding-time goals, burnout signals, and client invoicing.',
+            author: { '@type': 'Person', name: 'Cesar Mejia Leiva', url: 'https://github.com/cesarnml' },
+            isPartOf: { '@type': 'WebSite', name: 'CodingStats', url: 'https://codingstats.vercel.app' },
+          }),
         },
         { tag: 'script', attrs: { defer: true, src: '/_vercel/insights/script.js' } },
         {
